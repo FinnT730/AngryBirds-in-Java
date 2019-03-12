@@ -9,6 +9,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 public class Game extends JFrame {
 
@@ -21,9 +23,9 @@ public class Game extends JFrame {
     private static ArrayList<Box> boxList = new ArrayList<>();
 
 
-    public Game() {
-        boxList.add(new Box(0,600,Main.width,40));
+    Game() {
         boxList.add(new Box(150,150,40,40));
+        boxList.add(new Box(0,600,Main.width,40));
 //        this.add(new Box(0,500,Main.width,40));
 
 
@@ -44,11 +46,37 @@ public class Game extends JFrame {
         // GAME INSTANCEING UNDER HERE!!!!!!
 
 
-        for(Box b : boxList) {
-            b.paint(g);
-            b.repaint(b.getX(),b.getY(),b.getWidth(),b.getHeight());
-        }
+        BiConsumer<Integer, Box> renderBox = new BiConsumer<Integer, Box>() {
+            @Override
+            public void accept(Integer p, Box b) {
+                b.paint(g);
+            }
 
+
+            ArrayList<Integer> ro = new ArrayList<>();
+
+            @Override
+            public BiConsumer<Integer, Box> andThen(BiConsumer<? super Integer, ? super Box> after) {
+                if(after == null) {
+                    return null;
+                } else {
+                    after.andThen((q,w) -> {
+                    }).accept(ro.size(),new Box(0,0,Main.width,50));
+
+                }
+                return this::accept;
+            }
+        };
+
+        renderBox.andThen((a,b) -> {
+
+        }).accept(50,new Box(150,400,50,50));
+
+//        renderBox.accept(60,new Box(200,200,30,30));
+
+        boxList.forEach((a) -> {
+            renderBox.accept(51, null);
+        });
 
     }
 
