@@ -1,16 +1,9 @@
-import jdk.nashorn.internal.runtime.JSONListAdapter;
-import netscape.javascript.JSException;
-import netscape.javascript.JSObject;
+package game;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 
 public class Game extends JFrame {
 
@@ -26,7 +19,7 @@ public class Game extends JFrame {
     Game() {
         boxList.add(new Box(150,150,40,40));
         boxList.add(new Box(0,600,Main.width,40));
-//        this.add(new Box(0,500,Main.width,40));
+//        this.add(new game.Box(0,500,game.Main.width,40));
 
 
     }
@@ -72,7 +65,7 @@ public class Game extends JFrame {
 
         }).accept(50,new Box(150,400,50,50));
 
-//        renderBox.accept(60,new Box(200,200,30,30));
+//        renderBox.accept(60,new game.Box(200,200,30,30));
 
         boxList.forEach((a) -> {
             renderBox.accept(51, null);
