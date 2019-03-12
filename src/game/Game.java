@@ -63,12 +63,12 @@ public class Game extends JFrame {
 
         renderBox.andThen((a,b) -> {
 
-        }).accept(50,new Box(150,400,50,50));
+        }).accept(50,new Box(150,20,50,50));
 
 //        renderBox.accept(60,new game.Box(200,200,30,30));
 
         boxList.forEach((a) -> {
-            renderBox.accept(51, null);
+            renderBox.accept(51, a);
         });
 
     }
