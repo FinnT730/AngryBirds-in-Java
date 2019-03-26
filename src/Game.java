@@ -61,7 +61,8 @@ public class Game extends JFrame {
                     return null;
                 } else {
                     after.andThen((q,w) -> {
-                    }).accept(ro.size(),new Box(0,0,Main.width,50));
+
+                    }).accept(-1,new Box(0,0,Main.width,50));
 
                 }
                 return this::accept;
@@ -69,14 +70,15 @@ public class Game extends JFrame {
         };
 
         renderBox.andThen((a,b) -> {
-
         }).accept(50,new Box(150,400,50,50));
 
-//        renderBox.accept(60,new Box(200,200,30,30));
+        renderBox.accept(60,new Box(200,200,30,30));
 
-        boxList.forEach((a) -> {
-            renderBox.accept(51, null);
-        });
+        renderBox.accept(50,new Box(13,13,24,24));
+
+//        boxList.forEach((a) -> {
+//            renderBox.accept(51, a);
+//        });
 
     }
 

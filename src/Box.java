@@ -2,6 +2,9 @@ import java.awt.*;
 
 public class Box extends Component {
 
+
+    public static int ID = 0;
+
     private static int x;
     private static int y;
     private static int w;
